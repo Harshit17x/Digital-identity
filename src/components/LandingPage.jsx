@@ -997,6 +997,12 @@ function ResourcesSection() {
    9. SECTION: Pricing Component (Full-Width Blended Scroll)
 ========================================== */
 function PricingSection({ onOpenAuth }) {
+  const [showPaymentNotice, setShowPaymentNotice] = useState(false);
+
+  const handlePaidPlanClick = () => {
+    setShowPaymentNotice(true);
+  };
+
   return (
     <section id="pricing" style={{
       width: '100%',
@@ -1019,7 +1025,7 @@ function PricingSection({ onOpenAuth }) {
             padding: '5px 16px',
             borderRadius: '9999px',
             display: 'inline-block',
-            marginBottom: '18px',
+            marginBottom: '14px',
             boxShadow: '0 2px 10px rgba(15, 23, 42, 0.04)'
           }}>
             TRANSPARENT PRICING
@@ -1027,9 +1033,25 @@ function PricingSection({ onOpenAuth }) {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.03em', color: '#0F172A', margin: '0 0 16px 0', lineHeight: 1.2 }}>
             Invest in your digital footprint
           </h2>
-          <p style={{ fontSize: '1.1rem', color: '#64748B', lineHeight: 1.6, margin: 0 }}>
-            Start free with full core features, or unlock advanced visual knowledge maps for academic teams.
+          <p style={{ fontSize: '1.1rem', color: '#64748B', lineHeight: 1.6, margin: '0 0 16px 0' }}>
+            Start free with full core features, or explore advanced visual knowledge maps.
           </p>
+
+          {/* Payment Method Notice Pill */}
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            background: '#F1F5F9',
+            border: '1px solid #CBD5E1',
+            padding: '6px 14px',
+            borderRadius: '9999px',
+            fontSize: '0.82rem',
+            fontWeight: 600,
+            color: '#475569'
+          }}>
+            <span>💳 Payment methods & subscription billing will be added later</span>
+          </div>
         </div>
 
         {/* Pricing Cards Grid */}
@@ -1108,8 +1130,8 @@ function PricingSection({ onOpenAuth }) {
               </ul>
             </div>
 
-            <button onClick={onOpenAuth} style={{ width: '100%', background: '#0F172A', color: '#FFFFFF', border: '1px solid #1E293B', padding: '14px', borderRadius: '9999px', fontSize: '0.94rem', fontWeight: 700, cursor: 'pointer', boxShadow: '0 6px 20px rgba(15, 23, 42, 0.25)', transition: 'all 0.15s ease' }}>
-              Upgrade to Pro
+            <button onClick={handlePaidPlanClick} style={{ width: '100%', background: '#0F172A', color: '#FFFFFF', border: '1px solid #1E293B', padding: '14px', borderRadius: '9999px', fontSize: '0.94rem', fontWeight: 700, cursor: 'pointer', boxShadow: '0 6px 20px rgba(15, 23, 42, 0.25)', transition: 'all 0.15s ease' }}>
+              Upgrade to Pro (Coming Soon)
             </button>
           </div>
 
@@ -1138,13 +1160,87 @@ function PricingSection({ onOpenAuth }) {
                 <li style={{ display: 'flex', alignItems: 'center', gap: '10px' }}><Check size={18} color="#0F172A" /> Verified University Credential Badges</li>
               </ul>
             </div>
-            <button onClick={onOpenAuth} style={{ width: '100%', background: '#FFFFFF', color: '#0F172A', border: '1px solid #0F172A', padding: '14px', borderRadius: '9999px', fontSize: '0.94rem', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s ease' }}>
+            <button onClick={handlePaidPlanClick} style={{ width: '100%', background: '#FFFFFF', color: '#0F172A', border: '1px solid #0F172A', padding: '14px', borderRadius: '9999px', fontSize: '0.94rem', fontWeight: 700, cursor: 'pointer', transition: 'all 0.15s ease' }}>
               Contact Campus Team
             </button>
           </div>
 
         </div>
       </div>
+
+      {/* Payment Method Coming Soon Modal */}
+      {showPaymentNotice && (
+        <div 
+          onClick={() => setShowPaymentNotice(false)}
+          style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(15, 23, 42, 0.75)',
+            backdropFilter: 'blur(8px)',
+            zIndex: 3000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px'
+          }}
+        >
+          <div 
+            onClick={(e) => e.stopPropagation()}
+            className="animate-fade-in"
+            style={{
+              width: '100%',
+              maxWidth: '460px',
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              borderRadius: '24px',
+              padding: '32px',
+              boxShadow: '0 25px 60px rgba(15, 23, 42, 0.2)',
+              textAlign: 'center'
+            }}
+          >
+            <div style={{
+              width: '52px',
+              height: '52px',
+              borderRadius: '16px',
+              background: '#F1F5F9',
+              color: '#0F172A',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px auto',
+              fontSize: '1.5rem'
+            }}>
+              💳
+            </div>
+
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0F172A', margin: '0 0 10px 0' }}>
+              Payment Methods Coming Soon
+            </h3>
+
+            <p style={{ fontSize: '0.9rem', color: '#64748B', lineHeight: 1.55, margin: '0 0 24px 0' }}>
+              Payment gateway integrations (Stripe & cards) will be added in an upcoming release. For now, all Pro & Campus features are fully unlocked for free!
+            </p>
+
+            <button
+              onClick={() => { setShowPaymentNotice(false); onOpenAuth(); }}
+              style={{
+                width: '100%',
+                background: '#0F172A',
+                color: '#FFFFFF',
+                border: 'none',
+                padding: '14px',
+                borderRadius: '9999px',
+                fontSize: '0.94rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                boxShadow: '0 4px 16px rgba(15, 23, 42, 0.16)'
+              }}
+            >
+              Explore All Features Free
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
