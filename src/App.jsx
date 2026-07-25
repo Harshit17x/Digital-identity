@@ -21,7 +21,7 @@ export default function App() {
   const [activeCategory, setActiveCategory] = useState('All');
 
   // Page Routing State ('landing' | 'upload' | 'timeline')
-  const [activePage, setActivePage] = useState('upload');
+  const [activePage, setActivePage] = useState('landing');
 
   // Slider Control States
   const [yearFilter, setYearFilter] = useState('All');
