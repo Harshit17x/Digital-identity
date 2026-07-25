@@ -1,0 +1,196 @@
+:root {
+  /* 2026 SaaS Light Canvas Palette (Matching Landing Page) */
+  --bg-ink: #FAFAFA;
+  --surface-card: #FFFFFF;
+  --surface-card-hover: #F8FAFC;
+  --text-ink: #0F172A;
+  --text-ink-muted: #64748B;
+  
+  --chrome-text: #0F172A;
+  --chrome-text-muted: #475569;
+  --chrome-border: #E2E8F0;
+  --chrome-border-bright: #CBD5E1;
+  --chrome-surface: rgba(255, 255, 255, 0.9);
+
+  /* Premium High-Contrast Theme Palette */
+  --btn-primary-bg: #0F172A;
+  --btn-primary-hover: #1E293B;
+  --btn-primary-text: #FFFFFF;
+  --btn-primary-shadow: 0 4px 16px rgba(15, 23, 42, 0.16);
+
+  --moss-green: #0F172A;
+  --moss-green-hover: #1E293B;
+  --moss-green-bg: #F1F5F9;
+  --gold-thread: #D97706;
+  --gold-thread-bg: rgba(217, 119, 6, 0.1);
+
+  /* Fonts */
+  --font-serif: 'Source Serif 4', Georgia, serif;
+  --font-grotesk: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.05);
+  --shadow-overlay: 0 25px 60px rgba(15, 23, 42, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-grotesk);
+  background-color: var(--bg-ink);
+  background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--chrome-text);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* App Viewport Container */
+.app-viewport {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #FAFAFA;
+  background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: #0F172A;
+  font-family: var(--font-grotesk);
+  padding: 20px 32px 60px 32px;
+}
+
+@media (max-width: 768px) {
+  .app-viewport {
+    padding: 16px 16px 40px 16px;
+  }
+}
+
+/* Typography Rules */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-grotesk {
+  font-family: var(--font-grotesk);
+}
+
+/* White Clean Notebook Card Styling */
+.card-notebook {
+  background-color: var(--surface-card);
+  color: var(--text-ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid #E2E8F0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-notebook:hover {
+  background-color: var(--surface-card-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+/* Primary Royal Blue Button */
+.btn-moss {
+  background-color: #2563EB;
+  color: #FFFFFF;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-family: var(--font-grotesk);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+  transition: all 0.15s ease;
+}
+
+.btn-moss:hover {
+  background-color: #1D4ED8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.32);
+}
+
+/* Category Badge Tags */
+.tag-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  font-family: var(--font-grotesk);
+  background-color: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+/* Kbd Badge */
+.kbd-badge {
+  background-color: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: #475569;
+}
+
+.kbd-badge-dark {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 0.72rem;
+  font-family: monospace;
+  color: #94A3B8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.cmd-palette-input::placeholder {
+  color: #64748B;
+  opacity: 1;
+}
+
+
+/* Animations */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background-color: #2563EB;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: cursorBlink 1s infinite;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
